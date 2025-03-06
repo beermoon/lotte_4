@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -436,41 +437,52 @@
   </style>
 </head>
 <body>
+	<script>
+		const count = ${count};
+		
+		if(count > 0){
+			alert('글 수정 성공!');
+			window.location.href="/farmstory/community/notices.do";
+		}else{
+			alert('글 수정 실패! 다시 시도해주세요.');
+		}
+	
+	</script>
     <div id="wrapper">
-        <header>
-            <img src="../images/head_top_line.png" alt="헤더 선">
-            <a href="../main/main.html"><img src="../images/logo.png" class="header_logo" alt="로고사진"></a>
-            <img src="../images/head_txt_img.png" alt="무료배송">
+         <header>
+            <img src="/farmstory/images/head_top_line.png" alt="헤더 선">
+            <a href="/farmstory/main/main.do"><img src="/farmstory/images/logo.png" class="header_logo" alt="로고사진"></a>
+            <img src="/farmstory/images/head_txt_img.png" alt="무료배송">
             <span class="home">
-                <a href="../main/main.html">HOME</a>&thinsp;|&thinsp;
-                <a href="../users/login.html">로그인</a>&thinsp;|&thinsp;
-                <a href="../users/singup.html">회원가입</a>&thinsp;|&thinsp;
-                <a href="../profile/cart.html">나의정보</a>&thinsp;|&thinsp;
-                <a href="../main/main.html">로그아웃</a>&thinsp;|&thinsp;
-                <a href="../admin-dashboard/dashboard.html">관리자</a>&thinsp;|&thinsp;
+                <a href="/farmstory/main/main.do">HOME</a>&thinsp;|&thinsp;
+                <a href="/farmstory/user/login.do">로그인</a>&thinsp;|&thinsp;
+                <a href="/farmstory/user/terms.do">회원가입</a>&thinsp;|&thinsp;
+                <a href="/farmstory/profile/updateinfo.do">나의정보</a>&thinsp;|&thinsp;
+                <a href="/farmstory/user/logout.do">로그아웃</a>&thinsp;|&thinsp;
+                <a href="/farmstory/admin-dashboard/dashboard.do">관리자</a>&thinsp;|&thinsp;
                 <a href="#">고객센터</a>&thinsp;
             </span>
             <nav class="menu">
                 <div>
-                    <img src="../images/head_menu_line.png" class="line" alt="메뉴 선">
-                    <a href="../home/greeting.html"><img src="../images/head_menu1.png" alt="팜스토리 소개"></a>
+                    <img src="/farmstory/images/head_menu_line.png" class="line" alt="메뉴 선">
+                    <a href="/farmstory/home/greeting.do"><img src="/farmstory/images/head_menu1.png" alt="팜스토리 소개"></a>
                 </div>
                 <div>
-                    <img src="../images/head_menu_line.png" class="line" alt="메뉴 선">
-                    <img src="../images/head_menu_badge.png" alt="30%">
-                    <a href="../shop/product-list.html"><img src="../images/head_menu2.png" alt="장보기"></a>
+                    <img src="/farmstory/images/head_menu_line.png" class="line" alt="메뉴 선">
+                    <img src="/farmstory/images/head_menu_badge.png" alt="30%">
+                    <a href="/farmstory/shop/product-list.do"><img src="/farmstory/images/head_menu2.png" alt="장보기"></a>
                 </div>
                 <div>
-                    <img src="../images/head_menu_line.png" class="line" alt="메뉴 선">
-                    <a href="../stories/farm-stories.html"><img src="../images/head_menu3.png" alt="농작물이야기"></a>
+                    <img src="/farmstory/images/head_menu_line.png" class="line" alt="메뉴 선">
+                    <a href="/farmstory/stories/farm-stories.do"><img src="/farmstory/images/head_menu3.png" alt="농작물이야기"></a>
                 </div>
                 <div>
-                    <img src="../images/head_menu_line.png" class="line" alt="메뉴 선">
-                    <a href="../events/event-calendar.html"><img src="../images/head_menu4.png" alt="이벤트"></a>
+                    <img src="/farmstory/images/head_menu_line.png" class="line" alt="메뉴 선">
+                    <a href="/farmstory/events/event-calendar.do"><img src="/farmstory/images/head_menu4.png" alt="이벤트"></a>
                 </div>
                 <div>
-                    <img src="../images/head_menu_line.png" class="line" alt="메뉴 선">
-                    <a href="../community/notices.html"><img src="../images/head_menu5.png" alt="커뮤니티"></a>
+                    <img src="/farmstory/images/head_menu_line.png" class="line" alt="메뉴 선">
+                    <a href="/farmstory/community/notices.do"><img src="/farmstory/images/head_menu5.png" alt="커뮤니티"></a>
                 </div>
             </nav>
         </header>
@@ -491,7 +503,7 @@
                         <a href="../community/customer-inquiry.html"><img src="../images/sub_cate5_lnb4_ov.png" alt="1:1고객문의" ></a>
                         <a href="../community/faq.html"><img src="../images/sub_cate5_lnb5.png" alt="자주묻는질문"></a>
                     </div>
-                    </form>
+
                 </aside>
                 
            
@@ -506,17 +518,15 @@
                     <section>
                         <span>글수정</span>
                         <form action="/farmstory/community/customer-inquiry.do" method="post" enctype="multipart/form-data">
-                       		
-                       		<input type="text" id="cate" name="cate" value="1:1 고객문의  "> 
-                            <button type="submit" class="submit"><span>수정완료</span></button>
-                            <button type="button" class="cancle"><span>취소</span></button>
+                       		<input type="hidden" name="no" value="${no}">
+                       		<input type="text" id="cate" name="cate" value="1:1 고객문의 "> 
                             <div class="form-group1">
                                 <label for="title"><span>제목</span></label>
                                 <input type="text" id="title" name="title" placeholder="제목을 입력하세요.">
                             </div>
                             <div class="form-group2">
                                 <label for="content"><span>내용</span></label>
-                                <textarea id="content" name="content" rows="8" ></textarea>
+                                <textarea id="content" name="content" rows="8"></textarea>
                             </div>
                             <div class="form-group3">
                                 <label><span>파일</span></label>
@@ -526,10 +536,10 @@
                                     <input type="file" class="file-input" name="file2">
                                 </label>
                             </div>
-                            </table>
+                                <button type="submit" class="submit"><span>수정완료</span></button>
+                            	<button type="button" class="cancle"><span>취소</span></button>
                         </form>
                     </section>
-                    
                  </article>   
             </section>
         </main>

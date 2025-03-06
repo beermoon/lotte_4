@@ -2,6 +2,8 @@ package kr.co.farmstory.dto;
 
 import java.util.List;
 
+import org.eclipse.jdt.internal.compiler.parser.ParserBasicInformation;
+
 public class CommunityDTO {
 
 	private int no;
@@ -58,6 +60,10 @@ public class CommunityDTO {
 		public void setNo(int no) {
 			this.no = no;
 		}
+		public void setNo(String no) {
+			this.no = Integer.parseInt(no);
+		}
+		
 		public String getCate() {
 			return cate;
 		}

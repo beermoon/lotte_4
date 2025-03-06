@@ -8,72 +8,6 @@
 
     <link rel="stylesheet" href="../css/_header.css">
     <link rel="stylesheet" href="../css/_footer.css">
-    <script>
-    	
-    	document.addEventListener('DOMContentLoaded', function(){
-    		console.log('DOMContentLoaded...');
-    		
-    		const commentList = document.getElementsByClassName('commentList')[0];
-    		
-    		// 댓글 등록
-    		formComment.onsubmit = function(e){
-    			e.preventDefault();
-    			
-    			// 입력한 데이터 가져오기
-    			const parent = formComment.parent.value;
-    			const writer = formComment.writer.value;
-    			const content = formComment.content.value;
-    			
-    			// 폼 데이터 생성
-    			const formData = new FormData();
-    			formData.append('parent', parent);
-    			formData.append('writer', writer);
-    			formData.append('content', content);
-    			console.log(formData);
-    			
-    			// 서버 전송
-    			fetch('/farmstory/comment/write.do', {
-    				method: 'POST',
-    				body: formData
-    			})
-    			.then(response => response.json())
-    			.then(data => {
-    				console.log(data);
-    				
-    				// 동적 태그 생성
-    				if(data != null){
-    					
-    					alert('댓글이 등록 되었습니다.');
-    					
-    					// 입력 필드 비우기
-    					
-    					const community = `<community>
-					                        <span class='date'>\${data.wdate}</span>
-					                        <span class='nick'>\${data.nick}</span>
-					                        <p class='content'>\${data.content}</p>
-					                        <div>
-					                            <a href='#' class='remove'>삭제</a>
-					                            <a href='#' class='modify'>수정</a>
-					                        </div>
-					                     </community>`;
-					                     
-    					commentList.insertAdjacentHTML('beforeend', community);
-    					
-    				}else{
-    					alert('댓글 등록 실패 했습니다.');
-    				}
-    				
-    			})
-    			.catch(err => {
-    				console.log(err);
-    			});
-    		}
-    		
-    		
-    	});
-    
-    
-    </script>
 
   <style>
     main {
@@ -796,6 +730,41 @@ border-bottom: 1px dashed #111111;
   </style>
 </head>
 <body>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+	
+	const btnDelete = document.getElementsByClassName('c_delete')[0];
+	
+	btnDelete.onclick = async function(){
+		
+		const isConfirmed = confirm("글을 삭제 하시겠습니까?");
+		
+		if (isConfirmed) {
+			const value = document.getElementById('communityNo').value;
+			
+			const formData = new URLSearchParams();
+			formData.append("value", value);
+			
+			const response = await fetch('/farmstory/community/recipe-sharing.do', {
+				  method: 'POST',
+                  headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                  body: formData
+			});
+			
+			const data = await response.json();
+			
+			if(data.count > 0) {
+				alert('글 삭제 성공!');
+				window.location.href = "/farmstory/community/notices.do";
+			} else {
+				alert('글 삭제 실패. 다시 시도해 주세요.');
+			}
+		}
+	}
+	
+});
+
+</script>
     <div id="wrapper">
         <header>
             <img src="../images/head_top_line.png" alt="헤더 선">
@@ -860,27 +829,23 @@ border-bottom: 1px dashed #111111;
                     </nav>
                     <section>
                         <span>글보기</span>
-                        <form >
-                            
+                        <form class="formRegister">
+                            <input type="hidden" id="communityNo" value="${communityDTO.no}">
                             <div class="form-group1">
                                 <label for="title"><span>제목</span></label>
                                 <div>
-
                                     <label for="title"><span>${requestScope.communityDTO.title}</span></label>
 
-                                   
-
                                 </div>
-                                
                             </div>
-    
+ 
                             <div class="form-group2">
                                 <label for="file"><span>파일</span></label>
                                 <label for="file"><span><c:forEach var="file" items="${communityDTO.files}">
 	                        		<p style="margin-top:6px;">
 	                        			<a href="/jboard/file/download.do?fno=${file.fno}">${file.oName}</a>&nbsp;<span>${file.download}</span>회 다운로드
 	                        		</p>
-	                        	</c:forEach></a></span>
+	                        	</c:forEach></span>
                                 </label>
                                 
                             </div>
@@ -891,7 +856,7 @@ border-bottom: 1px dashed #111111;
                             </div>
     
                             <button type="button" class="c_delete"><span>삭제</span></button>
-                            <button type="button" class="c_modify"><span>수정</span></button>
+                            <button type="button" class="c_modify"><a href="/farmstory/community/customer-inquiry.do?no=${communityDTO.no}">수정</a></button>
                             <button type="button" class="c_menu" ><a href="/farmstory/community/list.do"><span>목록</span></a></button>
                         </form>
     
@@ -923,7 +888,6 @@ border-bottom: 1px dashed #111111;
                             </div>
                             
                         </div>
-    					</form>
                     </section>
     
                     
