@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -226,10 +227,10 @@
                 </aside>
                 <article>
                     <nav>
-                        <img src="/farmstory/images/sub_nav_tit_cate3_tit2.png" alt="텃밭가꾸기">
+                        <img src="/farmstory/images/sub_nav_tit_cate2_tit1.png" alt="장보기">
                         <div class="nav_menu">
                             <img src="/farmstory/images/sub_page_nav_ico.gif" alt="#">
-                            <p>HOME > 농작물이야기 > <span>텃밭가꾸기</span></p>
+                            <p>HOME > 농작물이야기 > <span>농작물이야기</span></p>
                         </div>
                     </nav>
                     

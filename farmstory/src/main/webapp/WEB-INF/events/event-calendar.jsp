@@ -1,3 +1,5 @@
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -495,6 +497,9 @@ article > .calendar_container > .calendar_table_container > .calendar_table > tb
 
     <script>
 
+   
+    	
+    	
             // ✅ 날짜를 YYYY-MM-DD 형식으로 변환하는 함수 (최상단에 추가)
             function formatDate(year, month, day) {
                 return `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
@@ -644,7 +649,7 @@ article > .calendar_container > .calendar_table_container > .calendar_table > tb
                 // ✅ 초기 달력 렌더링
                 renderCalendar(currentYear, currentMonth);
 
-
+    
 
     </script>
 
