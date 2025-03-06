@@ -123,7 +123,10 @@
 
     main .content .setting { height: 187px; margin-bottom: 10px;}
 
-    main .content .modify {height: 378px;}
+    main .content .modify {
+    	height: 420px;
+    	margin-top : 60px
+    }
 
     
     main .content .setting td,
@@ -138,7 +141,71 @@
         background-color: #F5F8F9;
         box-sizing: border-box;
     }
-
+    
+    
+    #btnCheckPass {
+   		background-color : #2E658A;
+   		color : white;
+   		width : 85px;
+   		height : 27px;
+   
+    }
+    
+    
+   
+    
+    #btnCheckNick {
+    	background-color : white;
+    }
+    
+    #btnSendEmail {
+    	background-color : white;
+    }
+    
+    
+    #btnPost {
+    	background-color : white;
+    }
+    
+    
+    .input-group {
+    display: flex;
+    align-items: center;  /* 입력칸과 버튼의 높이를 맞춤 */
+    gap: 4px;  /* 입력칸과 버튼 사이 간격 */
+	}	
+    
+    
+    
+    
+    .buttons {
+    	display: flex;
+    	gap: 3px; /* 버튼 간격 */
+    	justify-content: flex-end; /* 우측 정렬 */
+    	margin-top: 10px;
+    }
+    
+    .btnCancel {
+    	width: 42px;
+    	height: 35px;
+   	 	border: 1px solid #BEBEBE;
+    	background-color: white;
+    	
+    }
+    
+    .btn.btnRegister {
+    	 width: 66px;
+    	height: 35px;
+    	border: 1px solid #BEBEBE;
+    }
+    
+    .userModify {
+    	position : absolute;
+    	top : 355px;
+    	
+    }
+    
+    
+     
     main .content .modify button {
         display: block;
         width: 58px;
@@ -236,7 +303,7 @@
                         </div>
                     </nav>
                     <div class="content">
-                        <p>회원정보 설정</p>
+                        <p class="userSet">회원정보 설정</p>
                         <!-- /farmstory/profile/updateinfo.do -->
                         <form action="#" name="formRegister" method="post">
                             <table class="setting">
@@ -265,7 +332,7 @@
                                     <td>${sessUser.regDate}</td>
                                 </tr>
                             </table>
-                            <p>개인정보 수정</p>
+                            <p class="userModify">개인정보 수정</p>
                             <table class="modify">
                                 <tr>
                                     <td>이름</td>
@@ -278,16 +345,20 @@
                                     <td>별명</td>
                                     <td>
                                     	<p>공백없는 한글, 영문, 숫자 입력</p><br>
+                                    	<div class="input-group">
                                         <input type="text" name="nick" placeholder="별명 입력" size="25;" style="height: 25px;">
-                                        <button type="button" id="btnCheckNick"><img src="/farmstory/images/user/chk_id.gif" alt="중복확인"></button> 
+                                        <button type="button" id="btnCheckNick"><img src="/farmstory/images/user/chk_id.gif" alt="중복확인"></button>
+                                        </div> 
                                     	<span class="nickResult"></span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>이메일</td>
                                     <td>
+                                    	<div class="input-group">
                                     	<input type="email" name="email" placeholder="이메일 입력" size="25;" style="height: 25px;">
-                                        <button type="button" id="btnSendEmail"><img src="/farmstory/images/user/chk_auth.gif" alt="인증번호"></button> 
+                                        <button type="button" id="btnSendEmail"><img src="/farmstory/images/user/chk_auth.gif" alt="인증번호"></button>
+                                        </div>
                                     	<span class="emailResult"></span>
                                 		<div class="auth" style="display: none;">
                                     		<input type="text" name="auth" placeholder="인증번호 입력"/>
@@ -305,8 +376,10 @@
                                 <tr>
                                     <td>주소</td>
                                     <td>
+                                    	<div class="input-group">
                                     	<input type="text" name="zip" id="zip" readonly placeholder="우편번호" size="25;" style="height: 25px;">
-                                        <button type="button" onclick="daumPostcode()"><img src="../images/user/chk_post.gif" alt="우편번호찾기"/></button>
+                                        <button type="button" onclick="daumPostcode()" id="btnPost"><img src="../images/user/chk_post.gif" alt="우편번호찾기"/></button>
+                                        </div>
                                         <input type="text" name="addr1" id="addr1" readonly placeholder="주소검색" size="25;" style="width: 400px; height: 25px;"><br>  
                                         <input type="text" name="addr2" id="addr2" placeholder="상세주소 입력" size="25;" style="width: 400px; height: 25px;">
                                     </td>

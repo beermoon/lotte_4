@@ -157,27 +157,33 @@ header > .home {
     background-color: white;
 }
 
-    div >  .btnNext {
-    width: 93px;
-    height: 35px;
-    border: 1px solid #BEBEBE;
-    background-color: white;
-}
+   
+   .button-container {
+   	display: flex;
+    justify-content: flex-end; /* 오른쪽 정렬 */
+    margin-top: 10px; /* 위쪽 간격 */
+    gap: 10px; /* 버튼 간격 */
+   }
+   
 
-
-div >  .btnCancel {
+div >  .btnCancel , .btnNext {
     width: 42px;
     height: 35px;
+    text-align: center;
+    line-height: 35px;
     border: 1px solid #BEBEBE;
     background-color: white;
 }
 
-    div >  .btnNext {
-    width: 42px;
-    height: 35px;
-    border: 1px solid #BEBEBE;
-    background-color: white;
+   
+
+
+.explain {
+
+	margin-top : 22px;
+
 }
+
 
 
 
@@ -336,16 +342,19 @@ footer > .version {
                                 </td>
                             </tr>
                         </table> 
-                        <div>
-                       <a href="/farmstory/find/password.do" class="btn btnCancel">취소</a>
-                       <input type="submit" value="로그인" class="btn btnNext"/>
-                    </div>                                       
-                    </form>
-                    
-                    <p>
+                        
+                        <p class="explain">
                         비밀번호를 변경해 주세요.<br>
                         영문, 숫자, 특수문자를 사용하여 8자 이상 입력해 주세요.                    
                     </p>
+                        <div class="button-container ">
+                       <a href="/farmstory/find/password.do" class="btn btnCancel">취소</a>
+                       <input type="submit" value="다음 " class="btn btnNext" text+/>   <!-- value :로그인  -->
+                      
+                    </div>                                       
+                    </form>
+                    
+                    
                 </section>
             </main>
             <footer>
