@@ -2,6 +2,9 @@ package kr.co.farmstory.controller.profile;
 
 import java.io.IOException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -15,6 +18,8 @@ import kr.co.farmstory.dto.UserDTO;
 public class UpdateinfoController extends HttpServlet{
 
 	private static final long serialVersionUID = -3568609080669717772L;
+	
+	
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -34,6 +39,8 @@ public class UpdateinfoController extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
 		String uid = req.getParameter("uid");
+		
+		
 	}
 	
 

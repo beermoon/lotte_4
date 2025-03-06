@@ -319,35 +319,35 @@
             <a href="../main/main.html"><img src="../images/logo.png" class="header_logo" alt="로고사진"></a>
             <img src="../images/head_txt_img.png" alt="무료배송">
             <span class="home">
-                <a href="../main/main.html">HOME</a>&thinsp;|&thinsp;
-                <a href="../users/login.html">로그인</a>&thinsp;|&thinsp;
-                <a href="../users/singup.html">회원가입</a>&thinsp;|&thinsp;
-                <a href="../profile/cart.html">나의정보</a>&thinsp;|&thinsp;
+                <a href="../main/main.do">HOME</a>&thinsp;|&thinsp;
+                <a href="../users/login.do">로그인</a>&thinsp;|&thinsp;
+                <a href="../users/singup.do">회원가입</a>&thinsp;|&thinsp;
+                <a href="../profile/cart.do">나의정보</a>&thinsp;|&thinsp;
                 <a href="../main/main.html">로그아웃</a>&thinsp;|&thinsp;
-                <a href="../admin-dashboard/dashboard.html">관리자</a>&thinsp;|&thinsp;
+                <a href="../admin-dashboard/dashboard.do">관리자</a>&thinsp;|&thinsp;
                 <a href="#">고객센터</a>&thinsp;
             </span>
             <nav class="menu">
                 <div>
                     <img src="../images/head_menu_line.png" class="line" alt="메뉴 선">
-                    <a href="../home/greeting.html"><img src="../images/head_menu1.png" alt="팜스토리 소개"></a>
+                    <a href="../home/greeting.do"><img src="../images/head_menu1.png" alt="팜스토리 소개"></a>
                 </div>
                 <div>
                     <img src="../images/head_menu_line.png" class="line" alt="메뉴 선">
                     <img src="../images/head_menu_badge.png" alt="30%">
-                    <a href="../shop/product-list.html"><img src="../images/head_menu2.png" alt="장보기"></a>
+                    <a href="../shop/product-list.do"><img src="../images/head_menu2.png" alt="장보기"></a>
                 </div>
                 <div>
                     <img src="../images/head_menu_line.png" class="line" alt="메뉴 선">
-                    <a href="../stories/farm-stories.html"><img src="../images/head_menu3.png" alt="농작물이야기"></a>
+                    <a href="../stories/farm-stories.do"><img src="../images/head_menu3.png" alt="농작물이야기"></a>
                 </div>
                 <div>
                     <img src="../images/head_menu_line.png" class="line" alt="메뉴 선">
-                    <a href="../events/event-calendar.html"><img src="../images/head_menu4.png" alt="이벤트"></a>
+                    <a href="../events/event-calendar.do"><img src="../images/head_menu4.png" alt="이벤트"></a>
                 </div>
                 <div>
                     <img src="../images/head_menu_line.png" class="line" alt="메뉴 선">
-                    <a href="../community/notices.html"><img src="../images/head_menu5.png" alt="커뮤니티"></a>
+                    <a href="../community/notices.do"><img src="../images/head_menu5.png" alt="커뮤니티"></a>
                 </div>
             </nav>
         </header>
@@ -360,11 +360,11 @@
                     <img src="../images/sub_aside_cate5_tit.png" alt="커뮤니티">
                     <img src="../images/sub_aside_bg_line.png" alt="목록선">
                     <div class="list"> <!--수정-->
-                        <a href="../community/notices.html"><img src="../images/sub_cate5_lnb1.png" alt="공지사항"></a>
-                        <a href="../community/today-menu.html"><img src="../images/sub_cate5_lnb2.png" alt="오늘의식단"></a>
-                        <a href="../community/recipe-sharing.html"><img src="../images/sub_cate5_lnb3.png" alt="나도요리사"></a>
-                        <a href="../community/customer-inquiry.html"><img src="../images/sub_cate5_lnb4.png" alt="1:1고객문의"></a>
-                        <a href="../community/faq.html"><img src="../images/sub_cate5_lnb5_ov.png" alt="자주묻는질문"></a>
+                        <a href="../community/notices.do"><img src="../images/sub_cate5_lnb1.png" alt="공지사항"></a>
+                        <a href="../community/today-menu.do"><img src="../images/sub_cate5_lnb2.png" alt="오늘의식단"></a>
+                        <a href="../community/recipe-sharing.do"><img src="../images/sub_cate5_lnb3.png" alt="나도요리사"></a>
+                        <a href="../community/customer-inquiry.do"><img src="../images/sub_cate5_lnb4.png" alt="1:1고객문의"></a>
+                        <a href="../community/faq.do"><img src="../images/sub_cate5_lnb5_ov.png" alt="자주묻는질문"></a>
                     </div>
                 </aside>
                 <article>
