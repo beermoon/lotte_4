@@ -227,13 +227,36 @@ public class CommunityDAO extends DBHelper {
 		return communitys;		
 	}
 	
-	
-	
-	public void updateCommunity(CommunityDTO dto) {
-		
+
+	public int updateCommunity(CommunityDTO dto) {
+		int count = 0;
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.UPDATE_COMMUNITY);
+			psmt.setString(1,dto.getTitle());
+			psmt.setString(2,dto.getContent());
+			psmt.setInt(3,dto.getFile());
+			psmt.setString(4,dto.getRegip());			
+			psmt.setInt(5, dto.getNo());
+			count = psmt.executeUpdate();
+			closeAll();
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+		return count;
 	}
 	
-	public void deleteCommunity(int no) {
-		
+	public int deleteCommunity(String no) {
+		int count = 0;
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.DELETE_COMMUNITY);
+			psmt.setString(1, no);
+			count = psmt.executeUpdate();
+			closeAll();
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+		return count;
 	}
 }

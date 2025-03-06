@@ -17,15 +17,10 @@ import kr.co.farmstory.dto.FileDTO;
 import kr.co.farmstory.service.CommunityService;
 import kr.co.farmstory.service.FileService;
 
-
-
 @WebServlet("/community/customer-inquiry.do")
 public class CustomerinquiryController extends HttpServlet{
 	
 private static final long serialVersionUID = 6702814985301369938L;
-
-
-private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 private CommunityService service = CommunityService.INSTANCE;
 private FileService fileService = FileService.INSTANCE;
@@ -33,6 +28,11 @@ private FileService fileService = FileService.INSTANCE;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		String no = req.getParameter("no");
+
+		req.setAttribute("no", no);
+		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/community/customer-inquiry.jsp");
 		dispatcher.forward(req, resp);
 	} 
@@ -40,11 +40,10 @@ private FileService fileService = FileService.INSTANCE;
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		// 클라이언트 데이터 수신 
-				String cate = req.getParameter("cate");
+				// 클라이언트 데이터 수신 
+				String no = req.getParameter("no");
 				String title = req.getParameter("title");
 				String content = req.getParameter("content");
-				String writer = req.getParameter("writer");
 				String regip = req.getRemoteAddr();
 				
 				// 파일 업로드 서비스 호
@@ -52,34 +51,28 @@ private FileService fileService = FileService.INSTANCE;
 				
 				// DTO 생성                                           
 				CommunityDTO dto = new CommunityDTO();
-				dto.setCate(cate);
+				dto.setNo(no);
 				dto.setTitle(title);
 				dto.setContent(content);
 				dto.setFile(files.size());
-				dto.setWriter(writer);
 				dto.setRegip(regip);
 				
 				
-				
-				
-				logger.debug(dto.toString());
-				
-
 				// 서비스 호출 
-				int no = service.registeCommunity(dto);
+				int count = service.modifyCommunity(dto);
 				
 				// 파일 등록 서비스 호출
 				for(FileDTO fileDTO : files) {
-					fileDTO.setAno(no);
+					fileDTO.setAno(count);
 					fileService.registeFile(fileDTO);
 				}
 
 				
-				// 이동
-				resp.sendRedirect("/farmstory/community/customer-inquiry.do");
-		
-		
-		
+				req.setAttribute("count", count);
+				
+				RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/community/customer-inquiry.jsp");
+				dispatcher.forward(req, resp);
+
 	}
 }
 

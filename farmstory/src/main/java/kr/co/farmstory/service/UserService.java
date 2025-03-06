@@ -54,8 +54,8 @@ public enum UserService {
 		
 	}
 	
-	public void deleteUser(String uid) {
-		dao.deleteUser(uid);
+	public int deleteUser(String uid) {
+		return dao.deleteUser(uid);
 	}
 	
 	// 이메일 발송
@@ -69,7 +69,10 @@ public enum UserService {
 		String sender = "sjo112777@gmail.com";
 		String title = "farmstory 인증코드 입니다.";
 		String content = "<h1>인증코드는 " + code + "입니다.</h1>";
+
+
 		String appPassword = "ixrp ntly zgft xkiv";
+
 
 		
 		// Gmail SMTP 서버 설정

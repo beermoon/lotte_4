@@ -70,11 +70,9 @@ public enum FileService {
 			Collection<Part> parts = req.getParts();
 			
 			for(Part part : parts) {
-				logger.debug(part.toString());
 				
 				// 파일명 추출
 				String oName = part.getSubmittedFileName();
-				logger.debug(oName);
 				
 				// 파일을 첨부했으면
 				if(oName != null && !oName.isEmpty()) {

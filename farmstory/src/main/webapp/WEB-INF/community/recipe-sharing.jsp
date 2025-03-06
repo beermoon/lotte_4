@@ -9,7 +9,7 @@
 
     <link rel="stylesheet" href="../css/_header.css">
     <link rel="stylesheet" href="../css/_footer.css">
-    
+
   <style>
     main {
         width: 100%;
@@ -584,6 +584,8 @@ color: #111111;
 </head>
 <body>
 <script>
+
+
     	
     	document.addEventListener('DOMContentLoaded', function(){
     		console.log('DOMContentLoaded...');
@@ -651,6 +653,7 @@ color: #111111;
     
     </script>
 
+
     <div id="wrapper">
         <header>
             <img src="../images/head_top_line.png" alt="헤더 선">
@@ -715,27 +718,23 @@ color: #111111;
                     </nav>
                     <section>
                         <span>글보기</span>
-                        <form >
-                            
+                        <form class="formRegister">
+                            <input type="hidden" id="communityNo" value="${communityDTO.no}">
                             <div class="form-group1">
                                 <label for="title"><span>제목</span></label>
                                 <div>
-
                                     <label for="title"><span>${requestScope.communityDTO.title}</span></label>
 
-                                   
-
                                 </div>
-                                
                             </div>
-    
+ 
                             <div class="form-group2">
                                 <label for="file"><span>파일</span></label>
                                 <label for="file"><span><c:forEach var="file" items="${communityDTO.files}">
 	                        		<p style="margin-top:6px;">
 	                        			<a href="/jboard/file/download.do?fno=${file.fno}">${file.oName}</a>&nbsp;<span>${file.download}</span>회 다운로드
 	                        		</p>
-	                        	</c:forEach></a></span>
+	                        	</c:forEach></span>
                                 </label>
                                 
                             </div>
@@ -745,9 +744,10 @@ color: #111111;
                                 <label>${communityDTO.content}</label>
                             </div>
     
-                            <button type="button" class="c_delete"><a href="/farmstory/community/notices.do"><span>삭제</span></button>
-                            <button type="button" class="c_modify"><a href="/farmstory/community/customer-inquiry.do"><span>수정</span></button>
-                            <button type="button" class="c_menu" ><a href="/farmstory/community/notices.do"><span>목록</span></a></button>
+
+                            <button type="button" class="c_delete"><span>삭제</span></button>
+                            <button type="button" class="c_modify"><a href="/farmstory/community/customer-inquiry.do?no=${communityDTO.no}">수정</a></button>
+                            <button type="button" class="c_menu" ><a href="/farmstory/community/list.do"><span>목록</span></a></button>
                         </form>
                         
     					<!-- 댓글쓰기 -->
@@ -784,6 +784,7 @@ color: #111111;
 		                </section>
 					
 		               
+
                     </section>
                  </article>   
             </section>

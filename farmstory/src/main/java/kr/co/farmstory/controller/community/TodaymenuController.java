@@ -66,9 +66,6 @@ private static final long serialVersionUID = 6702814985301369938L;
 		int no = service.registeCommunity(dto);
 		
 		
-		
-		
-		
 		// 파일 등록 서비스 호출
 				for(FileDTO fileDTO : files) {
 					fileDTO.setAno(no);

@@ -35,12 +35,12 @@ public enum CommunityService {
 		return dao.selectAllCommunityBySearch(dto, start);
 	}
 	
-	public void modifyCommunity(CommunityDTO dto) {
-		dao.updateCommunity(dto);
+	public int modifyCommunity(CommunityDTO dto) {
+		return dao.updateCommunity(dto);
 	}
 	
-	public void deleteCommunity(int no) {
-		dao.deleteCommunity(no);
+	public int  deleteCommunity(String no) {
+		return dao.deleteCommunity(no);
 	}
 	
 	// 마지막 페이지 번호 계산

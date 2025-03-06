@@ -11,7 +11,7 @@ public class SQL {
 	public static final String WHERE_NICK = "where `nick`=?";
 	public static final String WHERE_EMAIL = "where `email`=?";
 	public static final String WHERE_HP = "where `hp`=?";
-	public static final String DELETE_USER = "DELETE FROM users WHERE uid = ?";
+	public static final String DELETE_USER = "DELETE FROM `user` WHERE uid = ?";
 	
 	public static final String SELECT_USER_UID = "SELECT `name`, `uid`, `email`, `regDate` "
 												+ "FROM `user` "
@@ -35,9 +35,18 @@ public class SQL {
 											+ "`regip`=?,"
 											+ "`regDate`=NOW()";
 	
+	public static final String UPDATE_USER = "update `user` set "
+								            + "`pass`=SHA2(?, 256),"
+								            + "`name`=?,"
+								            + "`nick`=?,"
+								            + "`email`=?,"
+								            + "`hp`=?,"
+								            + "`zip`=?,"
+								            + "`addr1`=?,"
+								            + "`addr2`=? "
+								            + "where `uid`=?";
 
-						
-	
+
 
 	public static final String SEARCH_USER = "SELECT `name`, `uid`, `email`, `regDate` "
 											+ "FROM `user` "
@@ -87,6 +96,16 @@ public class SQL {
 													+ "`writer`=?,"
 													+ "`regip`=?,"
 													+ "`wdate`=NOW()";
+	
+	public static final String UPDATE_COMMUNITY = "update `Community` set "
+													+ "`title`=?,"
+													+ "`content`=?,"
+													+ "`file`=?,"
+													+ "`regip`=?,"
+													+ "`wdate`= NOW() "
+													+ "where `no` =?";
+	
+	public static final String DELETE_COMMUNITY = "delete from `community` where `no` =?";
 		
 	// comment
 	public static final String INSERT_COMMENT = "insert into `comment` set "

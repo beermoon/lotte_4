@@ -242,41 +242,75 @@
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script src="/farmstory/js/daumPostcode.js"></script>
 	<script src="/farmstory/js/validation.js"></script>
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+		
+		    const btnDelete = document.getElementById('btnDelete');
+		
+		    btnDelete.onclick = async function() {
+		
+		        const isConfirmed = confirm("탈퇴하시겠습니까?");
+		        
+		        if (isConfirmed) {
+		            const value = formRegister.uid.value;  
+		
+		            const formData = new URLSearchParams();
+		            formData.append("mode", "delete");
+		            formData.append("value", value);
+
+	                const response = await fetch('/farmstory/profile/updateinfo.do', {
+	                    method: 'POST',
+	                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+	                    body: formData
+	                });
+	
+	                const data = await response.json();
+	                
+	                if (data.count > 0) {
+	                    alert('탈퇴되었습니다.');
+	                    window.location.href = "/farmstory/main/main.do"; 
+	                } else {
+	                    alert("탈퇴 실패. 다시 시도해주세요.");
+	                }
+				}
+			};
+		});
+	</script>
     <div id="wrapper">
-        <header>
+            <header>
             <img src="/farmstory/images/head_top_line.png" alt="헤더 선">
-            <a href="/farmstory/main/main.html"><img src="/farmstory/images/logo.png" class="header_logo" alt="로고사진"></a>
+            <a href="/farmstory/main/main.do"><img src="/farmstory/images/logo.png" class="header_logo" alt="로고사진"></a>
             <img src="/farmstory/images/head_txt_img.png" alt="무료배송">
             <span class="home">
-                <a href="/farmstory/main/main.html">HOME</a>&thinsp;|&thinsp;
-                <a href="/farmstory/users/login.html">로그인</a>&thinsp;|&thinsp;
-                <a href="/farmstory/users/singup.html">회원가입</a>&thinsp;|&thinsp;
-                <a href="/farmstory/profile/cart.html">나의정보</a>&thinsp;|&thinsp;
-                <a href="/farmstory/main/main.html">로그아웃</a>&thinsp;|&thinsp;
-                <a href="/farmstory/admin-dashboard/dashboard.html">관리자</a>&thinsp;|&thinsp;
+                <a href="/farmstory/main/main.do">HOME</a>&thinsp;|&thinsp;
+                <a href="/farmstory/user/login.do">로그인</a>&thinsp;|&thinsp;
+                <a href="/farmstory/user/terms.do">회원가입</a>&thinsp;|&thinsp;
+                <a href="/farmstory/profile/updateinfo.do">나의정보</a>&thinsp;|&thinsp;
+                <a href="/farmstory/user/logout.do">로그아웃</a>&thinsp;|&thinsp;
+                <a href="/farmstory/admin-dashboard/dashboard.do">관리자</a>&thinsp;|&thinsp;
                 <a href="#">고객센터</a>&thinsp;
             </span>
             <nav class="menu">
                 <div>
                     <img src="/farmstory/images/head_menu_line.png" class="line" alt="메뉴 선">
-                    <a href="/farmstory/home/greeting.html"><img src="/farmstory/images/head_menu1.png" alt="팜스토리 소개"></a>
+                    <a href="/farmstory/home/greeting.do"><img src="/farmstory/images/head_menu1.png" alt="팜스토리 소개"></a>
                 </div>
                 <div>
                     <img src="/farmstory/images/head_menu_line.png" class="line" alt="메뉴 선">
                     <img src="/farmstory/images/head_menu_badge.png" alt="30%">
-                    <a href="/farmstory/shop/product-list.html"><img src="/farmstory/images/head_menu2.png" alt="장보기"></a>
+                    <a href="/farmstory/shop/product-list.do"><img src="/farmstory/images/head_menu2.png" alt="장보기"></a>
                 </div>
                 <div>
                     <img src="/farmstory/images/head_menu_line.png" class="line" alt="메뉴 선">
-                    <a href="/farmstory/stories/farm-stories.html"><img src="/farmstory/images/head_menu3.png" alt="농작물이야기"></a>
+                    <a href="/farmstory/stories/farm-stories.do"><img src="/farmstory/images/head_menu3.png" alt="농작물이야기"></a>
                 </div>
                 <div>
                     <img src="/farmstory/images/head_menu_line.png" class="line" alt="메뉴 선">
-                    <a href="/farmstory/events/event-calendar.html"><img src="/farmstory/images/head_menu4.png" alt="이벤트"></a>
+                    <a href="/farmstory/events/event-calendar.do"><img src="/farmstory/images/head_menu4.png" alt="이벤트"></a>
                 </div>
                 <div>
                     <img src="/farmstory/images/head_menu_line.png" class="line" alt="메뉴 선">
-                    <a href="/farmstory/community/notices.html"><img src="/farmstory/images/head_menu5.png" alt="커뮤니티"></a>
+                    <a href="/farmstory/community/notices.do"><img src="/farmstory/images/head_menu5.png" alt="커뮤니티"></a>
                 </div>
             </nav>
         </header>
@@ -289,9 +323,9 @@
                     <img src="/farmstory/images/myinfo//myinfo_menu_tit.png" alt="나의정보">
                     <img src="/farmstory/images/sub_aside_bg_line.png" alt="목록선">
                     <div class="list">
-                        <a href="/farmstory/profile/cart.html"><img src="/farmstory/images/myinfo/myinfo_menu1.png" alt="장바구니"></a>
-                        <a href="/farmstory/profile/order-history.html"><img src="/farmstory/images/myinfo/myinfo_menu2.png" alt="주문내역"></a>
-                        <a href="/farmstory/profile/update-info.html"><img src="/farmstory/images/myinfo/myinfo_menu3_ov.png" alt="정보수정"></a>
+                        <a href="/farmstory/profile/cart.do"><img src="/farmstory/images/myinfo/myinfo_menu1.png" alt="장바구니"></a>
+                        <a href="/farmstory/profile/orderhistory.do"><img src="/farmstory/images/myinfo/myinfo_menu2.png" alt="주문내역"></a>
+                        <a href="/farmstory/profile/updateinfo.do"><img src="/farmstory/images/myinfo/myinfo_menu3_ov.png" alt="정보수정"></a>
                     </div>
                 </aside>
                 <article>
@@ -303,9 +337,11 @@
                         </div>
                     </nav>
                     <div class="content">
-                        <p class="userSet">회원정보 설정</p>
-                        <!-- /farmstory/profile/updateinfo.do -->
-                        <form action="#" name="formRegister" method="post">
+
+                        <p>회원정보 설정</p>
+                        <form action="/farmstory/profile/updateinfo.do" name="formRegister" method="post">
+                        	<input type="hidden" name="mode" value="update">
+
                             <table class="setting">
                                 <tr>
                                     <td>아이디</td>
@@ -324,7 +360,7 @@
                                     <td>비밀번호 확인</td>
                                     <td>
                                     	<input type="password" name="pass2" placeholder="비밀번호 입력 확인" size="25;" style="height: 27px;">
-                                        <button id="btnCheckPass">비밀번호 수정</button>
+                                        <button type="button" id="btnCheckPass">비밀번호 수정</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -386,7 +422,7 @@
                                 </tr>
                                 <tr>
                                     <td>회원탈퇴</td>
-                                    <td><button type="button">탈퇴하기</button></td>
+                                    <td><button type="button" id="btnDelete">탈퇴하기</button></td>
                                 </tr>
                             </table>
                             <div class="buttons">

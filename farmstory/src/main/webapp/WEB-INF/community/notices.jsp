@@ -290,7 +290,7 @@ section.list > .page > .current {
                     	<a href="../community/notices.do"><img src="../images/sub_cate5_lnb1_ov.png" alt="공지사항"></a>
                         <a href="../community/today-menu.do"><img src="../images/sub_cate5_lnb2.png" alt="오늘의식단"></a>
                         <a href="../community/recipesharing.do"><img src="../images/sub_cate5_lnb3.png" alt="나도요리사"></a>
-                        <a href="../community/customerinquiry.do"><img src="../images/sub_cate5_lnb4.png" alt="1:1고객문의"></a>
+                        <a href="/farmstory/community/customer-inquiry.do"><img src="../images/sub_cate5_lnb4.png" alt="1:1고객문의"></a>
                         <a href="../community/faq.do"><img src="../images/sub_cate5_lnb5.png" alt="자주묻는질문"></a>
                     </div>
                 </aside>

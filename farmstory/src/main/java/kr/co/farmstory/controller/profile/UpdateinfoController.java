@@ -5,6 +5,10 @@ import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+
+import com.google.gson.JsonObject;
+
+
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -13,13 +17,19 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import kr.co.farmstory.dto.UserDTO;
+import kr.co.farmstory.service.UserService;
 
 @WebServlet("/profile/updateinfo.do")
 public class UpdateinfoController extends HttpServlet{
 
 	private static final long serialVersionUID = -3568609080669717772L;
 	
+
+	private UserService service = UserService.INSTANCE;
 	
+	Logger logger = LoggerFactory.getLogger(this.getClass());
+
+
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -27,9 +37,7 @@ public class UpdateinfoController extends HttpServlet{
 		HttpSession session = req.getSession();
 		UserDTO sessUser = (UserDTO) session.getAttribute("sessUser");
 		
-		
 		req.setAttribute("sessUser", sessUser);
-		
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/profile/update-info.jsp");
 		dispatcher.forward(req, resp);
@@ -37,10 +45,57 @@ public class UpdateinfoController extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		
+		String mode = req.getParameter("mode");
+		
+		if(mode.equals("update")) {
+			// 정보 수정
+			String uid = req.getParameter("uid");
+			String pass1 = req.getParameter("pass1");
+			String name= req.getParameter("name");
+			String nick = req.getParameter("nick");
+			String email = req.getParameter("email");
+			String hp = req.getParameter("hp");
+			String zip = req.getParameter("zip");
+			String addr1 = req.getParameter("addr1");
+			String addr2 = req.getParameter("addr2");
+			
+			UserDTO dto = new UserDTO();
+			dto.setUid(uid);
+			dto.setPass(pass1);
+			dto.setName(name);
+			dto.setNick(nick);
+			dto.setEmail(email);
+			dto.setHp(hp);
+			dto.setZip(zip);
+			dto.setAddr1(addr1);
+			dto.setAddr2(addr2);
+			
+			logger.debug(dto.toString());
+			
+			service.modifyUser(dto);
+			
+			resp.sendRedirect("/farmstory/user/login.do");
+			
+		} else if (mode.equals("delete")){
+			// 회원 탈퇴
+			String value = req.getParameter("value");
+			logger.debug("value: " + value);
+			
+			int count = service.deleteUser(value);
+			logger.debug("count: " + count);
+		
+			JsonObject json = new JsonObject();
+			json.addProperty("count", count);
+			resp.getWriter().println(json);
+		}
+
 	
 		String uid = req.getParameter("uid");
 		
 		
+
 	}
 	
 
