@@ -149,19 +149,26 @@ header > .home {
     margin-top: 10px;
 }
 
-    div >  .btnlogin {
+    div >  .btn.btnCancel {
+    display : inline-block;
     width: 54px;
     height: 35px;
     border: 1px solid #BEBEBE;
     background-color: white;
+    line-height: 35px;  /* 글씨를 수직 가운데 정렬 */
+    text-align: center;
 }
 
-    div >  .btnfind {
+    div >   .btn.btnfind {
+    display : inline-block;
     width: 93px;
     height: 35px;
     border: 1px solid #BEBEBE;
     background-color: white;
+    line-height: 35px;  /* 글씨를 수직 가운데 정렬 */
+    text-align: center;
 }
+
 
 
 footer {
