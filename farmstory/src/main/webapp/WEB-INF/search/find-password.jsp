@@ -149,19 +149,27 @@ header > .home {
     margin-top: 10px;
 }
 
-    div >  .btnCancel {
+    div >  .btn.btnCancel , .btn.btnNext{
+    display: inline-block;  /* 가로, 세로 크기 적용 */
     width: 42px;
     height: 35px;
-    border: 1px solid #BEBEBE;
     background-color: white;
+    border : 1px solid #BEBEBE;
+    line-height: 35px;  /* 글씨를 수직 가운데 정렬 */
+    text-align: center;
 }
 
-    div >  .btnNext {
-    width: 42px;
-    height: 35px;
-    border: 1px solid #BEBEBE;
-    background-color: white;
+.btnAuth {
+	height : 27px;
+	width : 85px;
 }
+
+.btnConfirm {
+	width : 34px;
+	height : 27px;
+
+}
+
 
 
 footer {

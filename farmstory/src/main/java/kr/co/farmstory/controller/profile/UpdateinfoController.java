@@ -5,7 +5,9 @@ import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+
 import com.google.gson.JsonObject;
+
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -22,9 +24,11 @@ public class UpdateinfoController extends HttpServlet{
 
 	private static final long serialVersionUID = -3568609080669717772L;
 	
+
 	private UserService service = UserService.INSTANCE;
 	
 	Logger logger = LoggerFactory.getLogger(this.getClass());
+
 
 	
 	@Override
@@ -41,6 +45,7 @@ public class UpdateinfoController extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
 		
 		String mode = req.getParameter("mode");
 		
@@ -85,6 +90,12 @@ public class UpdateinfoController extends HttpServlet{
 			json.addProperty("count", count);
 			resp.getWriter().println(json);
 		}
+
+	
+		String uid = req.getParameter("uid");
+		
+		
+
 	}
 	
 

@@ -136,6 +136,16 @@ header > .home {
     margin-top: 6px;
 }
 
+
+	.btn_container {
+	display: flex;
+    gap: 3px; /* 버튼 간격 */
+    justify-content: flex-end; /* 우측 정렬 */
+    margin-top: 10px;
+	
+	}
+
+
     div >  .btnCancel {
     width: 42px;
     height: 35px;
@@ -144,9 +154,9 @@ header > .home {
     
 }
 
-    div >  .btnRegister {
-    diplay: flex;
-    width: 60px;
+    div   input.btn.btnRegister {
+    
+    width: 66px;
     height: 35px;
     border: 1px solid #BEBEBE;
     
@@ -305,7 +315,7 @@ footer > .version {
                             </td>
                         </tr>
                     </table>
-                    <div>
+                    <div class="btn_container">
                         <button class="btnCancel"><a href="/farmstory/user/login.do">취소</button>
                         <input type="submit" value="회원가입" class="btn btnRegister"/>
                     </div>

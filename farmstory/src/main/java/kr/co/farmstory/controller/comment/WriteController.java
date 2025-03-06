@@ -58,6 +58,6 @@ public class WriteController extends HttpServlet {
 		printWriter.println(json);
 		
 		//이동
-		resp.sendRedirect("/farmstory/community/recipe-sharing.do");
+		//resp.sendRedirect("/farmstory/community/recipe-sharing.do");
 	}
 }
