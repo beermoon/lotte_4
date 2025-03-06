@@ -1,8 +1,9 @@
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>관리자 주문관리> 주문목록</title>
+    <title>관리자 주문관리> 회원목록</title>
     <style>
             /* 태그 초기화 */
     * {
@@ -81,6 +82,7 @@
         right: 470px;
         top: 60px;
      
+
     }
 
     main > aside {
@@ -91,21 +93,25 @@
         box-sizing: border-box;
         padding-left: 10px;
         
+
     }
     main > div {
-        float: left;
-        width: 775px;
+        width: 795px;
         height: 600px;
         top: 0px;
+        position: absolute;
+        margin-left: 170px;
+        
      
     }
 
     main > div > ul:nth-child(1){
-        width: 785px;
+        width: 795px;
         height: 45px;
-     
-    }
+    
+      
 
+    }
     main > div > ul:nth-child(1) > p{
        font-size: larger;
        font-weight :bold;
@@ -114,7 +120,7 @@
     }
     main > div > ul:nth-child(2){
         float: left;
-        width: 785px;
+        width: 795px;
         height: auto;
         border-top: 2px solid #000000;
         box-sizing: border-box;
@@ -122,37 +128,47 @@
   
 
     table, th, td {
-        width: 785px;
-        border-bottom: 1px solid gray;
+        width: 795px;
+        
         border-collapse: collapse;
         box-sizing: border-box;        
     }
     th, td {
+        padding: 12px 5px;
         
-        padding: 9.5px 20px;
     }
+
+    td {
+        text-align: center;
+    }
+  
     
-    td:nth-child(1){
-        width: 110px;
-    }
+
+    
+    td:nth-child(6) {
+    white-space: nowrap;
+    width: 120px; /* 적절한 너비 설정 */
+    overflow: hidden;
+    text-overflow: ellipsis; /* 내용이 길 경우 ...으로 표시 */
+}
+    
 
     main > div > ul:nth-child(3){
         float: left;
         width: 785px;
         height: 50px;
         box-sizing: border-box;
-        margin-left: 380px;
-        margin-top: 10px;
-        
+        margin-top: 15px;
+        margin-left: 350px;
+       
+  
     }
-    main > div > ul:nth-child(3) > li{
-        float: left;
-        margin-left: 5px;
+    main > div > ul:nth-child(3) > a {
+        font-weight: 600; 
     }
-    main > div > ul:nth-child(3) > li:nth-child(1){
-        margin-top: 2px;
-    }
-
+      
+       
+   
     .a_title {
         box-sizing: border-box;
         width: 150px;
@@ -187,7 +203,7 @@
 
     .title {
         position: absolute;
-        width: 176px;
+        width: 155px;
         height: 234px;
         top: 40px;
     }
@@ -445,68 +461,66 @@
             </aside>
             <div>
                 <ul>
-                    <p>상품등록</p>
+                    <p>회원목록</p>
                 </ul>
                 <ul>
                     <table>
                         <tr>
-                            <td>상품명 </td>
-                            <td><label><input type="text" placeholder="" size="25;" style="height: 18px;"></label></td>
-                        </tr>
-                        <tr>
-                            <td>종류</td>
-                            <td><label><input type="text" placeholder="종류" size="25;" style=" width: 45px; height: 18px;"></label></td>
-                        </tr>
-                        <tr>
-                            <td>가격</td>
-                            <td><label><input type="text" placeholder="" size="25;" style="height: 18px;"></label></td>
-                        </tr>
-                        </tr>
-                        <tr>
-                            <td>포인트 </td>
-                            <td><label><input type="text" placeholder="" size="25;" style="height: 18px;"></label> 포인트는 가격의 1%</td>
-                        </tr>
-                        <tr>
-                            <td>할인</td>
-                            <td><label><input type="text" placeholder="5%" size="25;" style=" width: 45px; height: 18px;"></label></td>
-                        </tr>
-                        </tr>
-                        <tr>
-                            <td>배송비</td>
-                            <td><lavel><input type="radio" name="할인" value="2,000원">2,000원</lavel>
-                                <lavel><input type="radio" name="할인" value="3,000원" style="margin-left: 10px;">3,000원</lavel>
-                                <lavel><input type="radio" name="할인" value="5,000원" style="margin-left: 10px;">5,000원</lavel>
-                                <lavel><input type="radio" name="할인" value="무료" style="margin-left: 10px;">무료</lavel>
-                                
+                            <td><label><input type="checkbox" ></td>
+                            <td>아이디</td>
+                            <td>이름</td>
+                            <td>별명</td>
+                            <td>이메일</td>
+                            <td>휴대폰</td>
+                            <td>등급</td>
+                            <td>가입일</td>
+                            <td>확인</td>
                             
-                            </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgb(155, 155, 155);">
+                            <td><label><input type="checkbox" name="할인" ></label></td>
+                            <td>a101</td>
+                            <td>김유신</td>
+                            <td>유신101</td>
+                            <td>yusin101@naver.com</td>
+                            <td>010-1234-1001</td>
+                            <td><label><input type="text" readonly placeholder="" size="3"></label></td>
+                            <td>2023-01-01-13:06:14</td>
+                            <td><a href="#">[상세확인]</a></td>
                         </tr>
                         <tr>
-                            <td>재고</td>
-                            <td><label><input type="text" placeholder="" size="25;" style="height: 18px;"></label></td>
-                        </tr>
+                            <td><label><input type="checkbox" name="할인" value="2,000원"></label></td>
+                            <td>a102</td>
+                            <td>김춘추</td>
+                            <td>춘추102</td>
+                            <td>chunchu102@naver.com</td>
+                            <td>010-1234-1002</td>
+                            <td><label><input type="text" readonly placeholder="" size="3"></label></td>
+                            <td>2023-01-02-13:06:14</td>
+                            <td><a href="#">[상세확인]</a></td>
                         </tr>
                         <tr>
-                            <td>상품이미지</td>
-                            <td class="img">상품목록 이미지(약 120 x 120)<br><lavel><input type="button" value="Choose File" style="width: 85px; height: 20px; margin-top: 5px; margin-bottom: 5px;"></lavel> No file chosen<br>
-                                기본정보 이미지(약 240 x 240)<br><lavel><input type="button" value="Choose File" style="width: 85px; height: 20px; margin-top: 5px; margin-bottom: 5px;" ></lavel>  No file chosen<br>
-                                상품설명 이미지(약 750 x Auto)<br><lavel><input type="button" value="Choose File" style="width: 85px; height: 20px; margin-top: 5px; margin-bottom: 10px;" >  No file chosen</lavel>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>기타</td>
-                            <td><label><input type="text" placeholder="" size="25;" style="height: 18px;"></label></td>
+                            <td><label><input type="checkbox" name="할인" value="2,000원"></label></td>
+                            <td>a103</td>
+                            <td>장보고</td>
+                            <td>보고103</td>
+                            <td>bogo103@naver.com</td>
+                            <td>010-1234-1003</td>
+                            <td><label><input type="text" readonly placeholder="" size="3"></label></td>
+                            <td>2023-01-03-13:06:14</td>
+                            <td><a href="#">[상세확인]</a></td>
                         </tr>
                     </table>
 
                 </ul>
                 <ul>
-                    <li>
-                        <lavel><input type="button" value="취소" style="width: 65px; height: 35px; border-radius: 20px; font-size: larger; font-weight: 600;"></lavel>
-                    </li>
-                    <li>
-                        <lavel><input type="button" value="상품등록" style="width: 100px; height: 40px; border-radius: 20px; font-size: larger; font-weight: 600;"></lavel>
-                    </li>
+                    <a href="#">＜</a>
+                    <a href="#">[1] </a>
+                    <a href="#">[2] </a>
+                    <a href="#">[3] </a>
+                    <a href="#">[4] </a>
+                    <a href="#">[5] </a>
+                    <a href="#">＞</a>
                 </ul>
             </div>
         </main>
